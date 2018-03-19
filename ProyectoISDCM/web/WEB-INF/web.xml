@@ -12,9 +12,25 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>servletUser</servlet-name>
+        <servlet-class>controlador.servletUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>servletLogin</servlet-name>
+        <servlet-class>controlador.servletLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletUser</servlet-name>
+        <url-pattern>/servletUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletLogin</servlet-name>
+        <url-pattern>/servletLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

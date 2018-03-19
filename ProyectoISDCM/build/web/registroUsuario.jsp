@@ -9,17 +9,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registro de usuario</title>
     </head>
     <body>
-        Nombre: <input type="text" name="NOMBRE_USUARIO" /><br />
-        Apellidos: <input type="text" name="APELLIDOS_USUARIO" /><br />
-        Correo: <input type="text" name="CORREO_USUARIO" /><br />
-        Identificador: <input type="text" name="ID_USUARIO" /><br />
-        Contraseña: <input type="passwd" name="PASSWD_USUARIO" /><br />
+        <form action="servletUser" method="post">
+        Nombre: <input type="text" name="nombre" /><br />
+        Apellidos: <input type="text" name="apellidos" /><br />
+        Correo: <input type="text" name="email" /><br />
+        Identificador: <input type="text" name="id" /><br />
+        Contraseña: <input type="passwd" name="passwd" /><br />
         Repetir contraseña: <input type="passwd" name="passwd2" /><br />
-        Dirección <input type="text" name="DIRECCION_USUARIO" /><br />
-        Teléfono <input type="text" name="TELEFONO_USUARIO" /><br />					
-
+        Dirección <input type="text" name="direccion" /><br />
+        Teléfono <input type="text" name="telefono" /><br />					
+        <input type="submit" value="Registrase" />
+        </form>
+        Si ya tiene una cuenta, pinche <a href="login.jsp">aquí</a>
     </body>
 </html>
