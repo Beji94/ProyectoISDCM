@@ -1,4 +1,4 @@
-		.login-form div {
+.login-form div {
     width:500px;
   
     margin:10px 0;
@@ -6,7 +6,17 @@
     line-height:28px;
     border:none;
 }
-		input[type="button"], input[type="submit"] {
+.registrouser-form div {
+    width:600px;
+  
+    margin:10px 0;
+    position:center;
+    line-height:28px;
+    border:none;
+}
+
+
+input[type="button"], input[type="submit"] {
 position:relative;
 	left: 100px;
  
@@ -95,8 +105,6 @@ input[type="button"]:active, input[type="submit"]:active {
 }
  
 
- 
-
 .divLog {
   position: relative;
   left: 400px;
@@ -128,6 +136,39 @@ input[type="button"]:active, input[type="submit"]:active {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 4px;
 }
+
+
+.divRegistrousuario {
+  position:absolute;
+  top:50px;
+  left: 400px;
+  margin: 80px auto;
+  padding: 20px 20px 20px;
+  width: 450px;
+  background: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+  
+   
+ 
+  
+}
+
+.divLog:divRegistrousuario {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+
+
 .labelTitle{
 	margin-left: 3%;
 	line-height: 30px;
@@ -145,7 +186,19 @@ input[type="button"]:active, input[type="submit"]:active {
 	
 	font-size:14px;
 } 
-		.textbox{
+
+.warningTitleuser{
+	margin-right: 3%;
+	position:relative;
+	top: 20px;
+  bottom: -8px;
+  left: 160px;
+	color:black;
+	
+	font-size:14px;
+} 
+
+.textbox{
     height:28px;
     width:300px;
   border: 1px solid #cccccc;
