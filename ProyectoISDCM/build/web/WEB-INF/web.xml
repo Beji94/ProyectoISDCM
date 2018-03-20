@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>servletLogin</servlet-name>
-        <servlet-class>controlador.servletLogin</servlet-class>
+        <servlet-class>controlador.servletRegistro</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>

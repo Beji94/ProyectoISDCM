@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Beñat
  */
-public class servletLogin extends HttpServlet {
+public class servletRegistro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -102,7 +102,7 @@ public class servletLogin extends HttpServlet {
             stmt.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(servletLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(servletRegistro.class.getName()).log(Level.SEVERE, null, ex);
         }
         try (PrintWriter out = response.getWriter()) {
         /* TODO output your page here. You may use following sample code. */
