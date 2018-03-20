@@ -21,7 +21,7 @@ public class User {
         
     }
     
-    public int login (String id, String passwd) throws SQLException {
+    public int login(String id, String passwd) throws SQLException {
         int nick = 0;
         int pass = 0;
         int ok = 0;

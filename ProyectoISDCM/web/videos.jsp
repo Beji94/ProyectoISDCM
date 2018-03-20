@@ -23,11 +23,6 @@
           
               <div class="divRegistrousuario">
 		 <table>
-		
-                <tr>
-                    <td  class ="labelTitle">      Id Video                     </td>
-                    <td> <input type="text" class ="textbox" name="id" /> </td>
-                </tr>
                 
                  <tr>
                     <td  class ="labelTitle">  Titulo                 </td>
@@ -47,19 +42,22 @@
                 
                  <tr>
                     <td  class ="labelTitle">      duracion                     </td>
-                    <td><input type="passwd" class ="textbox"name="duracion" /></td>
+                    <td><input type="text" class ="textbox"name="duracion" /></td>
                 </tr>
-                
+                <tr>
+                    <td  class ="labelTitle">      descripcion                     </td>
+                    <td><input type="text" class ="textbox"name="direccion" /></td>
+                </tr>
                  
                 
                 <tr>
-                    <td  class ="labelTitle">      descripcion                     </td>
-                    <td><input type="passwd" class ="textbox"name="direccion" /></td>
+                    <td  class ="labelTitle">      URL                     </td>
+                    <td><input type="text" class ="textbox"name="url" /></td>
                 </tr>
                 
                  <tr>
                     <td  class ="labelTitle">      formato                     </td>
-                    <td><input type="passwd" class ="textbox"name="telefono" /></td>
+                    <td><input type="text" class ="textbox"name="telefono" /></td>
                 </tr>
                  <tr>
                      

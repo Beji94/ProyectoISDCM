@@ -16,6 +16,10 @@
         <servlet-name>servletUser</servlet-name>
         <servlet-class>controlador.servletUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servletRegistroVid</servlet-name>
+        <servlet-class>controlador.servletRegistroVid</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>servletUser</servlet-name>
         <url-pattern>/servletUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletRegistroVid</servlet-name>
+        <url-pattern>/servletRegistroVid</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
