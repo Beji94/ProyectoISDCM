@@ -26,7 +26,7 @@
 			<td><input class ="textbox" type="password" placeholder ="Password" name="passwd" /></td>
 		</tr>
 		<tr>
-			<td><input type="button" value="Aceptar" /> </td>
+			<td><input type="submit" name="login" value="Aceptar" /> </td>
 	  
 		</tr>
 		<tr>

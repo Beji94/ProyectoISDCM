@@ -92,7 +92,7 @@ return true;
                  <tr>
                      
                     <td> 
-                        <input type="submit"  value="Registrase" />
+                        <input type="submit"  name="registro" value="Registrase" />
                     </td>
                     
                 </tr>

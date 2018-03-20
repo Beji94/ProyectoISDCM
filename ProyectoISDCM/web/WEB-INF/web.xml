@@ -16,10 +16,6 @@
         <servlet-name>servletUser</servlet-name>
         <servlet-class>controlador.servletUser</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>servletLogin</servlet-name>
-        <servlet-class>controlador.servletRegistro</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -28,16 +24,12 @@
         <servlet-name>servletUser</servlet-name>
         <url-pattern>/servletUser</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>servletLogin</servlet-name>
-        <url-pattern>/servletLogin</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>registroUsuario.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
