@@ -17,10 +17,7 @@
           
     </head>
       <body background="css/resources/fondo.jpg">
-          
-          
-          
-          
+          <form action="servletRegistroVid" method="post">
               <div class="divRegistrousuario">
 		 <table>
                 
@@ -62,16 +59,16 @@
                  <tr>
                      
                     <td> 
-                        <input type="submit"  value="Grabar" />
+                        <input type="submit" name="videos" value="Grabar" />
                     </td>
                     
                 </tr>
                 <tr>
-                    <td colspan="3" class ="warningTitleuser"> Ver lista de videos <a href="login.jsp">aquí</a>  </td>
+                    <td colspan="3" class ="warningTitleuser"> Ver lista de videos <a href="lista_videos.jsp">aquí</a>  </td>
                 </tr>
                  </table>
                 
                 </div>
-       
+          </form>
     </body>
 </html>
