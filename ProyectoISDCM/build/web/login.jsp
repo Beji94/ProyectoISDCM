@@ -9,14 +9,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+          <link href="css/logincss.css" rel="stylesheet" />
         <title>Login</title>
     </head>
-    <body>
-        <form action="servletUser" method="post">
-            Identificador: <input type="text" name="id" />
-            Contraseña: <input type="password" name="passwd" />
-            <input type="submit" value="Aceptar">
+    <body background="css/resources/fondo.jpg">
+        <form action="servletUser" class="login-form" method="post">
+           	 <div class="divLog">
+		 <table>
+		 
+		<tr>
+			<td class ="labelTitle">  Identificador:</td>
+			<td><input class ="textbox" type="text" placeholder="Usuario" name="id" /></td>
+		</tr>    
+		<tr>
+			<td class ="labelTitle">Password:</td>
+			<td><input class ="textbox" type="password" placeholder ="Password" name="passwd" /></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="Aceptar" /> </td>
+	  
+		</tr>
+		<tr>
+			<td class="warningTitle" colspan="3">         Si no tiene una cuenta, registrese  <a href="registroUsuario.jsp">aquí</a></td>
+		</tr>
+    </table>
+    </div>
+    
         </form>
-        Si no tiene una cuenta, pinche <a href="registroUsuario.jsp">aquí</a>
+     
     </body>
 </html>
