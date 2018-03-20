@@ -40,7 +40,7 @@ public class VideoDAO {
         return cont;
     }
     
-    public void registrarVideo(String titulo, String autor, Date fecha, float duracion, String descripcion, String url) {
+    public void registrarVideo(String titulo, String autor, Date fecha, float duracion, String descripcion, String url, String id_usuario) {
         
     }
 }
