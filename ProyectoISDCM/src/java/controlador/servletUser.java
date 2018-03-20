@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.User;
-import modelo.Usuario;
+import clases.Usuario;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -88,41 +89,96 @@ public class servletUser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         int log = 0;
+        int exist = 0;
         
-        try {
-            log = verificarLogin(request.getParameter("id"), request.getParameter("passwd"));
-        } catch (SQLException ex) {
-            Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if (log==1) {
-            try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>ServletUser</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Login correcto</h1>");
-                out.println("</body>");
-                out.println("</html>");
+        if (request.getParameter("login") != null) {
+            try {
+                log = verificarLogin(request.getParameter("id"), request.getParameter("passwd"));
+            } catch (SQLException ex) {
+                Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (log==1) {
+                try (PrintWriter out = response.getWriter()) {
+                    /* TODO output your page here. You may use following sample code. */
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>ServletUser</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>Login correcto</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }
+                //Crear sesion
+                HttpSession sesion= request.getSession(true);
+                sesion.setAttribute("identificador",request.getParameter("id"));
+            }
+            else {
+                try (PrintWriter out = response.getWriter()) {
+                    /* TODO output your page here. You may use following sample code. */
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>ServletUser</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>Login incorrecto</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }
             }
         }
-        else {
-            try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>ServletUser</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Login incorrecto</h1>");
-                out.println("</body>");
-                out.println("</html>");
+             
+        else if (request.getParameter("registro") != null) {
+            User user = new User();
+            exist = user.userExist(request.getParameter("email"), request.getParameter("id"));
+            if(exist==1) {
+                try (PrintWriter out = response.getWriter()) {
+                    /* TODO output your page here. You may use following sample code. */
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>ServletUser</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>El email ya está en uso</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }
             }
-        }
+            else if (exist==2){
+                try (PrintWriter out = response.getWriter()) {
+                    /* TODO output your page here. You may use following sample code. */
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>ServletUser</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>El identificador ya está en uso</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }
+            }
+            else if (exist==0) {
+                user.crearUsuario(request.getParameter("nombre"), request.getParameter("apellidos"), 
+                        request.getParameter("email"), request.getParameter("id"), request.getParameter("passwd"));
+                
+                try (PrintWriter out = response.getWriter()) {
+                    /* TODO output your page here. You may use following sample code. */
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>ServletUser</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>El usuario se ha creado exitosamente</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }
+            }
+        }                
     }
 
     /**
