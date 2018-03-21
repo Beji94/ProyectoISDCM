@@ -15,9 +15,10 @@
 <html>
     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/logincss.css" rel="stylesheet" />
         <title>Lista de Videos</title>
     </head>
-    <body>
+     <body background="css/resources/fondo.jpg">
            <!--<form action="servletListavideo" class="login-form" method="post">
                <td><input type="submit" name="listavideo" value="Aceptar" /> </td>
            </form>
@@ -31,14 +32,15 @@
                     </c:when>
                
                    <c:otherwise>
-                        <table>
+                       <div id ="divlistavideo"> 
+                        <table id ="videos">
                             <tr>
-                                <th>titulo</th>
-                                <th>fecha</th>
-                                <th>duracion</th>
-                                <th>Num reproducciones</th>
-                                <th>formato</th>
-                                <th>url</th>
+                                <th>Titulo</th>
+                                <th>Fecha</th>
+                                <th>Duracion</th>
+                                <th>Numero reproducciones</th>
+                                <th>Formato</th>
+                                <th>Url</th>
                             </tr>
                         <c:forEach items="${listadoVideos}" var="video">
                             
@@ -54,6 +56,7 @@
 
                          </c:forEach>
                        </table>
+                            </div>
                    </c:otherwise>
 
                </c:choose>

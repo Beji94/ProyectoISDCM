@@ -137,6 +137,63 @@ input[type="button"]:active, input[type="submit"]:active {
   border-radius: 4px;
 }
 
+#videos {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    margin: 100px auto;
+}
+
+#videos td, #videos th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#videos tr:nth-child(even){background-color: #f2f2f2;}
+
+#videos tr:hover {background-color: #ddd;}
+
+#videos th {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: left;
+    background-color: #4CAF51;
+    color: white;
+}
+
+
+
+.divlistavideo {
+  position:absolute;
+  top:50px;
+  left: 400px;
+ margin: 80px auto;
+  padding: 20px 20px 20px;
+  width: 450px;
+  background: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+   
+.divLog:divlistavideo {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+
+
+
+
+
 
 .divRegistrousuario {
   position:absolute;
@@ -150,10 +207,10 @@ input[type="button"]:active, input[type="submit"]:active {
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   
-   
- 
-  
+     
 }
+
+
 
 .divLog:divRegistrousuario {
   content: '';
