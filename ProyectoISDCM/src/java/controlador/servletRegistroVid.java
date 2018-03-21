@@ -33,8 +33,12 @@ public class servletRegistroVid extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         long idVideo=0;
-         if (request.getParameter("videos") != null) {
-             
+         if (request.getSession().getAttribute("identificador")==null) {
+            request.setAttribute("noLogin", "true");
+            request.setAttribute("mensaje", "Usted no se ha iniciado sesión");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+         }
+         else if (request.getParameter("videos") != null) {   
              //Obtener el identificador del usuario mediante la sesion
              HttpSession sesion = (HttpSession) request.getSession();
              String idUsuario = (String) sesion.getAttribute("identificador");
