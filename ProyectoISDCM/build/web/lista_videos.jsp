@@ -55,11 +55,15 @@
 
 
                          </c:forEach>
+                             <tr>
+                    <td colspan="6" > agregar nuevo video <a href="videos.jsp">aquí</a>  </td>
+                </tr>
                        </table>
                             </div>
                    </c:otherwise>
 
                </c:choose>
            </div>
+           
     </body>
 </html>
