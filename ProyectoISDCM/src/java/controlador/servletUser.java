@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +18,7 @@ import modelo.User;
 import clases.Usuario;
 import clases.Video;
 import java.util.Vector;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import modelo.VideoDAO;
 
