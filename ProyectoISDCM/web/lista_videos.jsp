@@ -18,8 +18,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-           <form action="servletListavideo" class="login-form" method="post">
+           <!--<form action="servletListavideo" class="login-form" method="post">
                <td><input type="submit" name="listavideo" value="Aceptar" /> </td>
            </form>
+           -->
+           <div>
+               
+           </div>
     </body>
 </html>

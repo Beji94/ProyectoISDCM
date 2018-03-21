@@ -118,19 +118,10 @@ public class servletUser extends HttpServlet {
                 request.getRequestDispatcher("/servletListavideo").forward(request, response);
                
             }
-            else {
-                try (PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>ServletUser</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Login incorrecto</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
+            else if (log==0){
+                request.setAttribute("valorLogin", "error");
+                request.setAttribute("mensaje", "Usuario o contraseña erroneo");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }
              
