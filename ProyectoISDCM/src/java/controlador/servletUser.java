@@ -27,32 +27,6 @@ import modelo.VideoDAO;
  */
 public class servletUser extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet servletUser</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet servletUser at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     int verificarLogin(String identificador, String passwd) throws SQLException {
         int ok = 0;       
         User u = new User();
@@ -62,21 +36,6 @@ public class servletUser extends HttpServlet {
         return ok;
     }
     
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -101,9 +60,7 @@ public class servletUser extends HttpServlet {
                 Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (log==1) {
-                //Crear sesion
-                //HttpSession sesion= request.getSession(true);
-                //sesion.setAttribute("identificador",request.getParameter("id"));
+                //El usuario se ha logeado correctamente, crear una nueva sesión.
                 request.getSession().setAttribute("identificador", request.getParameter("id"));
                 
                 VideoDAO videoDAO = new VideoDAO();
@@ -113,7 +70,6 @@ public class servletUser extends HttpServlet {
                 } catch (SQLException ex) {
                     Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                System.out.println(listaVideos.size());
                 request.setAttribute("listadoVideos", listaVideos);
                 //response.sendRedirect("lista_videos");
                 request.getRequestDispatcher("lista_videos.jsp").forward(request, response);

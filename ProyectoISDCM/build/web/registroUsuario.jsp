@@ -87,12 +87,12 @@
                 
                  <tr>
                     <td  class ="labelTitle">      Pasword                     </td>
-                    <td><input type="passwd" class ="textbox"name="passwd" /></td>
+                    <td><input type="password" class ="textbox"name="passwd" /></td>
                 </tr>
                 
                  <tr>
                     <td  class ="labelTitle">      Confirmar Pasword                     </td>
-                    <td><input type="passwd" class ="textbox"name="passwd2" /></td>
+                    <td><input type="password" class ="textbox"name="passwd2" /></td>
                 </tr>
                 
                 <tr>
@@ -107,7 +107,7 @@
                  <tr>
                      
                     <td> 
-                        <input type="submit" name="registro" value="Registrase" />
+                        <input type="submit" name="registro" value="Registrarse" />
                     </td>
                     
                 </tr>

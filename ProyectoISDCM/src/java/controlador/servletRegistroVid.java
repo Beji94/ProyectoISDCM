@@ -5,10 +5,12 @@
  */
 package controlador;
 
+import clases.Video;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -24,55 +26,6 @@ import modelo.VideoDAO;
  */
 public class servletRegistroVid extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet servletRegistroVid</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet servletRegistroVid at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -96,19 +49,16 @@ public class servletRegistroVid extends HttpServlet {
             
             try {
                 video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("fecha"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario);
-            
-                try (PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>ServletRegistroVid</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>El video se ha guardado</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
+                VideoDAO videoDAO = new VideoDAO();
+                Vector<Video> listaVideos = new Vector<Video>();
+                try {
+                    listaVideos = videoDAO.listaVideos((String) request.getSession().getAttribute("identificador"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                request.setAttribute("listadoVideos", listaVideos);
+                //response.sendRedirect("lista_videos");
+                request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
