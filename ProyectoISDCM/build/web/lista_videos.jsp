@@ -26,8 +26,22 @@
            <div>
                <c:choose>
                     <c:when test="${listadoVideos.isEmpty()}">
-                       <div>
+                       <div id="divlistavideo">
                            <h2>Actualmente no tienes ningún video</h2>
+                           <table id ="videos">
+                               <tr>
+                                <th>Titulo</th>
+                                <th>Fecha</th>
+                                <th>Duracion</th>
+                                <th>Numero reproducciones</th>
+                                <th>Formato</th>
+                                <th>Url</th>
+                                </tr>
+                               <tr>
+                                    <td colspan="6" > agregar nuevo video <a href="videos.jsp">aquí</a>  </td>
+                                </tr>
+                            </table>
+                       
                        </div>
                     </c:when>
                
@@ -56,10 +70,10 @@
 
                          </c:forEach>
                              <tr>
-                    <td colspan="6" > agregar nuevo video <a href="videos.jsp">aquí</a>  </td>
-                </tr>
+                                <td colspan="6" > agregar nuevo video <a href="videos.jsp">aquí</a>  </td>
+                            </tr>
                        </table>
-                            </div>
+                       </div>
                    </c:otherwise>
 
                </c:choose>

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +49,7 @@ public class servletRegistroVid extends HttpServlet {
             }
             
             try {
-                video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("fecha"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario);
+                video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario);
                 VideoDAO videoDAO = new VideoDAO();
                 Vector<Video> listaVideos = new Vector<Video>();
                 try {
@@ -60,6 +61,8 @@ public class servletRegistroVid extends HttpServlet {
                 request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
                 
             } catch (SQLException ex) {
+                Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
                 Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
             }
             

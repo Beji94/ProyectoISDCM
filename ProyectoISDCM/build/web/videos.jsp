@@ -33,17 +33,12 @@
                 </tr>
                 
                  <tr>
-                    <td  class ="labelTitle">      fecha de creacion                     </td>
-                    <td><input type="text" class ="textbox"name="fecha_creacion" /></td>
-                </tr>
-                
-                 <tr>
                     <td  class ="labelTitle">      duracion                     </td>
                     <td><input type="text" class ="textbox"name="duracion" /></td>
                 </tr>
                 <tr>
                     <td  class ="labelTitle">      descripcion                     </td>
-                    <td><input type="text" class ="textbox"name="direccion" /></td>
+                    <td><input type="text" class ="textbox"name="descripcion" /></td>
                 </tr>
                  
                 
@@ -54,7 +49,7 @@
                 
                  <tr>
                     <td  class ="labelTitle">      formato                     </td>
-                    <td><input type="text" class ="textbox"name="telefono" /></td>
+                    <td><input type="text" class ="textbox"name="formato" /></td>
                 </tr>
                  <tr>
                      

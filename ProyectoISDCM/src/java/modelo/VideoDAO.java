@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 
 import java.util.logging.Level;
@@ -45,18 +47,22 @@ public class VideoDAO {
         return cont;
     }
     
-    public void registrarVideo(long idVideo, String titulo, String autor, String fecha, String duracion, String descripcion, String formato, String url, String id_usuario) throws SQLException {
+    public void registrarVideo(long idVideo, String titulo, String autor, String duracion, String descripcion, String formato, String url, String id_usuario) throws SQLException, ParseException {
         
         int reproduccion = 0;
         Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/dbISDCM", "root", "root");
         Statement sta = con.createStatement(); 
         
-        String SQL = "INSERT INTO ROOT.USUARIOS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        
+        
+        String SQL = "INSERT INTO ROOT.VIDEOS (IDENTIFICADOR, TITULO, AUTOR, FECHA, DURACION, REPRODUCCION, DESCRIPCION, FORMATO, URL, ID_USUARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = con.prepareStatement(SQL);
         pstmt.setLong(1, idVideo);
         pstmt.setString(2, titulo);
         pstmt.setString(3, autor);
-        pstmt.setDate(4, Date.valueOf(fecha));
+        pstmt.setDate(4, sqlDate);
         pstmt.setTime(5, Time.valueOf(duracion));
         pstmt.setInt(6, reproduccion);
         pstmt.setString(7, descripcion);
