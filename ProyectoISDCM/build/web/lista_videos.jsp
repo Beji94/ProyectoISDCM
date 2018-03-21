@@ -9,27 +9,7 @@
 
 <%--        Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/dbISDCM", "root", "root");
     --%>    
-
-<sql:query var="Lista_video" dataSource="jdbc/dbISDCM">
-    SELECT identificador,titulo,autor,fecha,duracion,descripcion,formato,url FROM ROOT.VIDEOS 
-</sql:query>
-    
-<table border="1">
-    <!-- column headers -->
-    <tr>
-    <c:forEach var="columnName" items="${Lista_video.columnNames}">
-        <th><c:out value="${columnName}"/></th>
-    </c:forEach>
-</tr>
-<!-- column data -->
-<c:forEach var="row" items="${Lista_video.rowsByIndex}">
-    <tr>
-    <c:forEach var="column" items="${row}">
-        <td><c:out value="${column}"/></td>
-    </c:forEach>
-    </tr>
-</c:forEach>
-</table>
+  
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,6 +18,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+           <form action="servletListavideo" class="login-form" method="post">
+               <td><input type="submit" name="listavideo" value="Aceptar" /> </td>
+           </form>
     </body>
 </html>
