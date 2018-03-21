@@ -12,9 +12,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
           <link href="css/logincss.css" rel="stylesheet" />
         <title>Login</title>
-        <script>
-            
-        </script>
     </head>
     <body background="css/resources/fondo.jpg">
 
