@@ -109,13 +109,14 @@ public class servletUser extends HttpServlet {
                 VideoDAO videoDAO = new VideoDAO();
                 Vector<Video> listaVideos = new Vector<Video>();
                 try {
-                    listaVideos = videoDAO.listaVideos(request.getParameter("identificador"));
+                    listaVideos = videoDAO.listaVideos((String) request.getSession().getAttribute("identificador"));
                 } catch (SQLException ex) {
                     Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                System.out.println(listaVideos.size());
                 request.setAttribute("listadoVideos", listaVideos);
                 //response.sendRedirect("lista_videos");
-                request.getRequestDispatcher("/servletListavideo").forward(request, response);
+                request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
                
             }
             else if (log==0){

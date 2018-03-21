@@ -15,7 +15,7 @@
 <html>
     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Lista de Videos</title>
     </head>
     <body>
            <!--<form action="servletListavideo" class="login-form" method="post">
@@ -23,7 +23,40 @@
            </form>
            -->
            <div>
+               <c:choose>
+                    <c:when test="${listadoVideos.isEmpty()}">
+                       <div>
+                           <h2>Actualmente no tienes ningún video</h2>
+                       </div>
+                    </c:when>
                
+                   <c:otherwise>
+                        <table>
+                            <tr>
+                                <th>titulo</th>
+                                <th>fecha</th>
+                                <th>duracion</th>
+                                <th>Num reproducciones</th>
+                                <th>formato</th>
+                                <th>url</th>
+                            </tr>
+                        <c:forEach items="${listadoVideos}" var="video">
+                            
+                            <tr>
+                            <td>${video.titulo}</td>
+                            <td>${video.fecha}</td>
+                            <td>${video.duracion} </td>
+                            <td>${video.reproduccion} </td>
+                            <td>${video.formato} </td>
+                            <td><a href=${video.url}>${video.url}</a></td>
+                            </tr>
+
+
+                         </c:forEach>
+                       </table>
+                   </c:otherwise>
+
+               </c:choose>
            </div>
     </body>
 </html>
