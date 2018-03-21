@@ -4,6 +4,7 @@
     Author     : User
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +18,20 @@
           
     </head>
       <body background="css/resources/fondo.jpg">
+            <c:choose>
+                <c:when test="${dobleurl!=null}">
+                    <c:if test="${dobleurl.equals('true')}">
+                        <script> alert("${mensaje}");</script>
+                    </c:if>
+                </c:when>
+                
+                <c:when test="${incompleto!=null}">
+                    <c:if test="${incompleto.equals('true')}">
+                        <script> alert("${mensaje}");</script>
+                    </c:if>
+                </c:when>
+            </c:choose>
+                        
           <form action="servletRegistroVid" method="post">
               <div class="divRegistrousuario">
 		 <table>

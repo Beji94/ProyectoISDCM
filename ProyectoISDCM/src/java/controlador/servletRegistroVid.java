@@ -33,43 +33,73 @@ public class servletRegistroVid extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         long idVideo=0;
-         if (request.getSession().getAttribute("identificador")==null) {
-            request.setAttribute("noLogin", "true");
-            request.setAttribute("mensaje", "Usted no se ha iniciado sesión");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-         }
-         else if (request.getParameter("videos") != null) {   
-             //Obtener el identificador del usuario mediante la sesion
-             HttpSession sesion = (HttpSession) request.getSession();
-             String idUsuario = (String) sesion.getAttribute("identificador");
-             
-             VideoDAO video = new VideoDAO();
-             
-            try {
-                //El identificador de video sera la cantidad de videos en la base de datos más 1.
-                idVideo = video.contarVideos(idUsuario)+1;
-            } catch (SQLException ex) {
-                Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
+            if (request.getSession().getAttribute("identificador")==null) {
+                request.setAttribute("noLogin", "true");
+                request.setAttribute("mensaje", "Usted no se ha iniciado sesión");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
+            else if (request.getParameter("videos") != null) {   
+                //Obtener el identificador del usuario mediante la sesion
+                HttpSession sesion = (HttpSession) request.getSession();
+                String idUsuario = (String) sesion.getAttribute("identificador");
+                int cont = 0;
+                VideoDAO video = new VideoDAO();
+             
+                String titulo=request.getParameter("titulo");
+                String autor=request.getParameter("autor");
+                String duracion=request.getParameter("duracion");
+                String descripcion=request.getParameter("descripcion");
+                String url=request.getParameter("url");
+                String formato=request.getParameter("formato");
             
-            try {
-                video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario);
-                VideoDAO videoDAO = new VideoDAO();
-                Vector<Video> listaVideos = new Vector<Video>();
-                try {
-                    listaVideos = videoDAO.listaVideos((String) request.getSession().getAttribute("identificador"));
-                } catch (SQLException ex) {
-                    Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                request.setAttribute("listadoVideos", listaVideos);
-                request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ParseException ex) {
-                Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+                if(titulo.isEmpty() || autor.isEmpty() || duracion.isEmpty() || descripcion.isEmpty() || url.isEmpty() || formato.isEmpty()) {
+                    request.setAttribute("incompleto", "true");
+                    request.setAttribute("mensaje", "No puedes dejar ningún campo sin rellenar");
+                    request.getRequestDispatcher("videos.jsp").forward(request, response);
+                    
+                } 
+             
+                else { 
+                    try {
+                        cont = video.verificarURL(idUsuario, request.getParameter("url"));
+                    } catch (SQLException ex) {
+                        Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    if(cont>0) {
+                        request.setAttribute("dobleurl", "true");
+                        request.setAttribute("mensaje", "El video que intenta grabar ya está registrado anteriormente");
+                        request.getRequestDispatcher("videos.jsp").forward(request, response);
+                    }
+
+                    else {
+
+                        try {
+                            //El identificador de video sera la cantidad de videos en la base de datos más 1.
+                            idVideo = video.contarVideos(idUsuario)+1;
+                        } catch (SQLException ex) {
+                            Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                        try {
+                            video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario);
+                            VideoDAO videoDAO = new VideoDAO();
+                            Vector<Video> listaVideos = new Vector<Video>();
+                            try {
+                                listaVideos = videoDAO.listaVideos((String) request.getSession().getAttribute("identificador"));
+                            } catch (SQLException ex) {
+                                Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            request.setAttribute("listadoVideos", listaVideos);
+                            request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
+
+                        } catch (SQLException ex) {
+                            Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+            }    
          }
          
     }

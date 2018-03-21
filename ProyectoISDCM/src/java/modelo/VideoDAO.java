@@ -30,7 +30,23 @@ public class VideoDAO {
     public VideoDAO() {
         
     }
-    
+     public int verificarURL(String identificador, String url) throws SQLException {
+        int cont = 0;
+        Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/dbISDCM", "root", "root");
+        
+        String SQL = ("SELECT URL FROM ROOT.VIDEOS WHERE ID_USUARIO=?");
+        PreparedStatement pstmt = con.prepareStatement(SQL);
+        pstmt.setString(1, identificador);
+        ResultSet res = pstmt.executeQuery();
+        
+        while(res.next()){
+            if(res.getString("URL").equals(url)) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+     
     public int contarVideos(String identificador) throws SQLException {
         int cont=0;
         
