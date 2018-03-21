@@ -129,50 +129,32 @@ public class servletUser extends HttpServlet {
         else if (request.getParameter("registro") != null) {
             User user = new User();
             exist = user.userExist(request.getParameter("email"), request.getParameter("id"));
-            if(exist==1) {
-                try (PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>ServletUser</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>El email ya está en uso</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
+            String pass1 = request.getParameter("passwd");
+            String pass2 = request.getParameter("passwd2");
+            
+            if (!pass1.equals(pass2)) {
+                request.setAttribute("valorPass", "error");
+                request.setAttribute("mensaje", "Las contraseñas que ha introducido no coinciden");
+                request.getRequestDispatcher("registroUsuario.jsp").forward(request, response);
             }
-            else if (exist==2){
-                try (PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>ServletUser</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>El identificador ya está en uso</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
+            
+            else if(exist==1) { //email
+                request.setAttribute("valorMail", "error");
+                request.setAttribute("mensaje", "El email que ha introducido ya está en uso");
+                request.getRequestDispatcher("registroUsuario.jsp").forward(request, response);
+            }
+            else if (exist==2){ //identificador
+                request.setAttribute("valorID", "error");
+                request.setAttribute("mensaje", "El identificador que ha introducido ya está en uso");
+                request.getRequestDispatcher("registroUsuario.jsp").forward(request, response);
             }
             else if (exist==0) {
                 user.crearUsuario(request.getParameter("nombre"), request.getParameter("apellidos"), 
                         request.getParameter("email"), request.getParameter("id"), request.getParameter("passwd"));
                 
-                try (PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>ServletUser</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>El usuario se ha creado exitosamente</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
+                request.setAttribute("registro", "true");
+                request.setAttribute("mensaje", "Se ha registrado satisfactoriamente, ahora debe logearse para entrar en la página");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }                
     }

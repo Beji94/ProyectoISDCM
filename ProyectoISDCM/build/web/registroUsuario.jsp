@@ -4,6 +4,7 @@
     Author     : benat.jimenez
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,32 +12,32 @@
         <script LANGUAGE="JavaScript">
             function validar_clave() 
             {
-var caract_invalido = " ";
-var caract_longitud = 6;
-var cla1 = document.registrouser.passwd.value;
-var cla2 = document.registrouser.passwd2.value;
-if (cla1 = '' || cla2 ='') {
-alert('Debes introducir tu clave en los dos campos.');
-return false;
-}
-if ( document.registrouser.passwd.value.length < caract_longitud) {
-alert('Tu clave debe constar de ' + caract_longitud + ' caracteres.');
-return false;
-}
-if (document.registrouser.passwd.value.indexOf(caract_invalido) > -1) {
-alert("Las claves no pueden contener espacios");
-return false;
-}
-else {
-if (cla1 <> cla2) {
-alert ("Las claves introducidas no son iguales");
-return false;
-}
-else {
-return true;
-      }
-   }
-}
+                var caract_invalido = " ";
+                var caract_longitud = 6;
+                var cla1 = document.registrouser.passwd.value;
+                var cla2 = document.registrouser.passwd2.value;
+                if (cla1 = '' || cla2 ='') {
+                alert('Debes introducir tu clave en los dos campos.');
+                return false;
+                }
+                if ( document.registrouser.passwd.value.length < caract_longitud) {
+                alert('Tu clave debe constar de ' + caract_longitud + ' caracteres.');
+                return false;
+                }
+                if (document.registrouser.passwd.value.indexOf(caract_invalido) > -1) {
+                alert("Las claves no pueden contener espacios");
+                return false;
+                }
+                else {
+                if (cla1 <> cla2) {
+                alert ("Las claves introducidas no son iguales");
+                return false;
+                }
+                else {
+                return true;
+                      }
+                   }
+            }
             
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -45,6 +46,20 @@ return true;
            <h1> REGISTRO DE USUARIOS  </h1>
     </head>
     <body  background="css/resources/fondo.jpg" >
+ 
+        <c:choose>
+            <c:when test="${valorPass.equals('error')}">
+                <script> alert("${mensaje}");</script>
+            </c:when>               
+           
+            <c:when test="${valorMail.equals('error')}">
+                    <script> alert("${mensaje}");</script>
+            </c:when>
+                    
+            <c:when test="${valorID.equals('error')}">
+                    <script> alert("${mensaje}");</script>
+            </c:when>
+        </c:choose>
         <form id="registrouser" action="servletUser" method="post">
              <div class="divRegistrousuario">
 		 <table>
@@ -92,7 +107,7 @@ return true;
                  <tr>
                      
                     <td> 
-                        <input type="submit"  name="registro" value="Registrase" />
+                        <input type="submit" name="registro" value="Registrase" />
                     </td>
                     
                 </tr>

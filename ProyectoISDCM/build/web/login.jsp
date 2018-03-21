@@ -23,6 +23,14 @@
                     </div>
                 </c:if>
             </c:when>
+            
+            <c:when test="${registro != null}">
+                <c:if test="${registro.equals('true')}">
+                    <div>
+                        <script> alert("${mensaje}");</script>
+                    </div>
+                </c:if>
+            </c:when>
         </c:choose>
         <form action="servletUser" class="login-form" method="post">
             <div class="divLog">
