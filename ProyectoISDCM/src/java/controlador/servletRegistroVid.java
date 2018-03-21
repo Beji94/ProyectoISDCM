@@ -90,7 +90,7 @@ public class servletRegistroVid extends HttpServlet {
                             } catch (SQLException ex) {
                                 Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            request.setAttribute("listadoVideos", listaVideos);
+                            request.getSession().setAttribute("listadoVideos", listaVideos);
                             request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
 
                         } catch (SQLException ex) {
