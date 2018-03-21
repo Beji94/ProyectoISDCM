@@ -57,7 +57,6 @@ public class servletRegistroVid extends HttpServlet {
                     Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 request.setAttribute("listadoVideos", listaVideos);
-                //response.sendRedirect("lista_videos");
                 request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
                 
             } catch (SQLException ex) {
