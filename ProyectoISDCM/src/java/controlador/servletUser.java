@@ -16,7 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.User;
 import clases.Usuario;
+import clases.Video;
+import java.util.Vector;
 import javax.servlet.http.HttpSession;
+import modelo.VideoDAO;
 
 /**
  *
@@ -98,21 +101,22 @@ public class servletUser extends HttpServlet {
                 Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (log==1) {
-                try (PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>ServletUser</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Login correcto</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
                 //Crear sesion
-                HttpSession sesion= request.getSession(true);
-                sesion.setAttribute("identificador",request.getParameter("id"));
+                //HttpSession sesion= request.getSession(true);
+                //sesion.setAttribute("identificador",request.getParameter("id"));
+                request.getSession().setAttribute("identificador", request.getParameter("id"));
+                
+                VideoDAO videoDAO = new VideoDAO();
+                Vector<Video> listaVideos = new Vector<Video>();
+                try {
+                    listaVideos = videoDAO.listaVideos(request.getParameter("identificador"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                request.setAttribute("listadoVideos", listaVideos);
+                //response.sendRedirect("lista_videos");
+                request.getRequestDispatcher("/servletListavideo").forward(request, response);
+               
             }
             else {
                 try (PrintWriter out = response.getWriter()) {

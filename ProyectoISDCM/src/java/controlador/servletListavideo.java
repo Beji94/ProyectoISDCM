@@ -68,35 +68,12 @@ public class servletListavideo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    
-    
-   
-     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-         
         
-            //Obtener el identificador del usuario mediante la sesion
-            HttpSession sesion = (HttpSession) request.getSession();
-            String idUsuario = (String) sesion.getAttribute("identificador");
-
+        String idUsuario = request.getParameter("idUsuario");
             VideoDAO video = new VideoDAO();
             Vector<Video> listado_videos = new Vector<Video>();
 
             try {
-                idUsuario="john.ballestas";
                 listado_videos = video.listaVideos(idUsuario);
                 try (PrintWriter out = response.getWriter()) {
                     /* TODO output your page here. You may use following sample code. */
@@ -126,6 +103,76 @@ public class servletListavideo extends HttpServlet {
                         out.println("<td>"+videonode.getReproduccion() +"</td>");
                         out.println("<td>"+videonode.getFormato() +"</td>");
                         out.println("<td>"+videonode.getUrl() +"</td>");
+                        out.println(" </tr>");
+
+                    }
+                    out.println("</table>");
+
+                    out.println("</body>");
+                    out.println("</html>");
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    
+    
+   
+     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+         
+        
+            //Obtener el identificador del usuario mediante la sesion
+            //HttpSession sesion = (HttpSession) request.getSession();
+            //String idUsuario = (String) sesion.getAttribute("identificador");
+            //String idUsuario = request.getParameter("identificador");
+            String idUsuario = (String) request.getSession().getAttribute("identificador");
+            System.out.println(idUsuario);
+            VideoDAO video = new VideoDAO();
+            Vector<Video> listado_videos = new Vector<Video>();
+
+            try {
+                listado_videos = video.listaVideos(idUsuario);
+                try (PrintWriter out = response.getWriter()) {
+                    /* TODO output your page here. You may use following sample code. */
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>ServletRegistroVid</title>");
+                    out.println("</head>");
+                    out.println("<body>");
+
+                    out.println("<table>");
+
+                    out.println("<tr>");
+                    out.println("<th>titulo</th>");
+                    out.println("<th>fecha</th>");
+                    out.println("<th>duracion</th>");
+                    out.println("<th>No reproducciones</th>");
+                    out.println("<th>formato</th>");
+                    out.println("<th>url</th>");
+
+                    for (Video videonode : listado_videos) {
+                        out.println(" </tr>");
+                        out.println("<tr>");
+                        out.println("<td>"+videonode.getTitulo() +"</td>");
+                        out.println("<td>"+videonode.getFecha()+"</td>");
+                        out.println("<td>"+videonode.getDuracion() +"</td>");
+                        out.println("<td>"+videonode.getReproduccion() +"</td>");
+                        out.println("<td>"+videonode.getFormato() +"</td>");
+                        out.println("<td><a href="+videonode.getUrl()+"/a>"+videonode.getUrl()+"</td>");
                         out.println(" </tr>");
 
                     }
