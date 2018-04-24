@@ -122,7 +122,8 @@ public class VideoDAO {
         
         return lista;
     }
-    public Vector<Video> busqueda(String autor, String titulo, int apubliDesde, int apubliHasta, String idUsuario) throws SQLException {
+    public Vector<Video> busqueda(String autor, String titulo, int apubliDesde, 
+            int apubliHasta, String idUsuario) throws SQLException {
         
         Vector<Video> lista = new Vector<Video>();
         autor = autor + "%";
