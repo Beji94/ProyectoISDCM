@@ -42,11 +42,11 @@
                                 
                                 </tr>
                                <tr>
-                                   <td> <text id="autor">  </td>
-                                   <td> <text id="titulo">  </td>
-                                   <td> <text id="apubliDesde">  </td>
-                                   <td> <text id="apubliHasta">  </td>
-                                   <td><input id ="filtrar">
+                                   <td> <input type="text" name="autor">  </td>
+                                   <td> <input type="text" name="titulo">  </td>
+                                   <td> <input type="text" name="apubliDesde">  </td>
+                                   <td> <input type="text" name="apubliHasta">  </td>
+                                   <td>  <input type="submit" name="filtrar" value="buscar" /></td>
                                 </tr>
                                 <tr>
                                    <>
