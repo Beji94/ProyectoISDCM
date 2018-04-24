@@ -20,6 +20,10 @@
         <servlet-name>servletRegistroVid</servlet-name>
         <servlet-class>controlador.servletRegistroVid</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servletBusqueda</servlet-name>
+        <servlet-class>controlador.servletBusqueda</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>servletRegistroVid</servlet-name>
         <url-pattern>/servletRegistroVid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletBusqueda</servlet-name>
+        <url-pattern>/servletBusqueda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
