@@ -23,6 +23,36 @@
                <td><input type="submit" name="listavideo" value="Aceptar" /> </td>
            </form>
            -->
+          <div id ="divfindparameters">
+                
+                           <table id ="findparameters">
+                               <tr>
+                                <th>Titulo</th>
+                                <th>Autor</th>
+                                <th>año de publicacion <br>
+                             
+                                <table>
+                                    <tr>
+                                    <td>Desde</td>
+                                    <td>Hasta</td>
+                                    </tr>
+                                    
+                                    </table>
+                                    </th>
+                                
+                                </tr>
+                               <tr>
+                                   <td> <text id="autor">  </td>
+                                   <td> <text id="titulo">  </td>
+                                   <td> <text id="apubliDesde">  </td>
+                                   <td> <text id="apubliHasta">  </td>
+                                   <td><input id ="filtrar">
+                                </tr>
+                                <tr>
+                                   <>
+                                </tr>
+                            </table>
+              </div>
            <div>
                <c:choose>
                     <c:when test="${listadoVideos.isEmpty()}">
