@@ -29,18 +29,32 @@ public class BusquedaWS {
      * Web service operation
      */
     @WebMethod(operationName = "busqueda")
+ 
     public Vector<modelos.Video> busqueda(@WebParam(name = "autor") String autor, 
-            @WebParam(name = "titulo") String titulo, @WebParam(name = "apubliDesde") int apubliDesde, 
-            @WebParam(name = "apubliHasta") int apubliHasta,@WebParam(name = "usuario") String usuario) {
+            @WebParam(name = "titulo") String titulo, @WebParam(name = "apubliDesde") String apubliDesde, 
+            @WebParam(name = "apubliHasta") String apubliHasta,@WebParam(name = "usuario") String usuario) {
+ 
         Vector<Video> listaVideo = new Vector<Video>();
         VideoDAO vDAO = new VideoDAO();
+        
         try {
-            if(autor.equals(null)) autor = "%";
-            if(titulo.equals(null)) titulo = "%";
-            if(Integer.toString(apubliDesde).equals(null)) apubliDesde=0;
-            if(Integer.toString(apubliHasta).equals(null)) apubliHasta=0;
+            if(autor==null) {
+                autor = "%";
+            }
+            if(titulo==null) {
+                //titulo = "%";
+                titulo="%";
+            }
+            if(apubliDesde==null) {
+                apubliDesde="1950";
+            }
+            if(apubliHasta==null) {
+                apubliHasta="2100";
+            }
             
-            listaVideo= vDAO.busqueda(autor, titulo, apubliDesde, apubliHasta, usuario);
+ 
+            listaVideo= vDAO.busqueda(autor, titulo, Integer.valueOf(apubliDesde), Integer.valueOf(apubliHasta), usuario);
+ 
         } catch (SQLException ex) {
             Logger.getLogger(BusquedaWS.class.getName()).log(Level.SEVERE, null, ex);
         }
