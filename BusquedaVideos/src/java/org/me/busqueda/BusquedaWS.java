@@ -45,10 +45,11 @@ public class BusquedaWS {
                 //titulo = "%";
                 titulo="%";
             }
-            if(apubliDesde==null || apubliDesde.equals("")) {
+            
+            if(apubliDesde==null || apubliDesde.equals("") ||vDAO.isNumeric(apubliDesde)==false ) {
                 apubliDesde="1950";
             }
-            if(apubliHasta==null || apubliHasta.equals("")) {
+            if(apubliHasta==null || apubliHasta.equals("") ||vDAO.isNumeric(apubliHasta)==false ) {
                 apubliHasta="2100";
             }
             
