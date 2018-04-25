@@ -8,6 +8,8 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
 import org.me.busqueda.BusquedaWS_Service;
+import org.me.busqueda.Date;
 import org.me.busqueda.Video;
 
 /**
@@ -82,7 +85,8 @@ public class servletBusqueda extends HttpServlet {
         //processRequest(request, response);
         
         response.setContentType("text/html;charset=UTF-8");
-        Vector<Video> listaVideos = new Vector<Video>();
+
+        ArrayList<Video> listaVideos = new ArrayList<Video>();
         
         if (request.getParameter("filtrar") != null) {
             HttpSession sesion = (HttpSession) request.getSession();
@@ -93,13 +97,32 @@ public class servletBusqueda extends HttpServlet {
             String apubliHasta = request.getParameter("apubliHasta");
             
             try {
-                listaVideos = (Vector<Video>) busqueda(autor, titulo, apubliDesde, apubliHasta, idUsuario);
+                listaVideos = (ArrayList<Video>) busqueda(autor, titulo, apubliDesde, apubliHasta, idUsuario);
             }
             catch (Exception e) {
                 System.out.println(e);
             }
+            System.out.println(listaVideos.size());
+            //System.out.println(listaVideos.get(0).getFechaXML());
+            /*Vector<Video> vecVideos = new Vector<Video>();
+            Video v = new Video();
+            Date date;
+            for(int i=0; i<listaVideos.size();i++) {
+                v.setTitulo(listaVideos.get(i).getTitulo());
+                v.setAutor(listaVideos.get(i).getAutor());
+                v.setDuracion(listaVideos.get(i).getDuracion());
+                v.setReproduccion(listaVideos.get(i).getReproduccion());
+                v.setDescripcion(listaVideos.get(i).getDescripcion());
+                v.setFormato(listaVideos.get(i).getFormato());
+                v.setUrl(listaVideos.get(i).getUrl());
+                v.setIdUsuario(listaVideos.get(i).getIdUsuario());
+                v.setApubli(listaVideos.get(i).getApubli());
+                date = (listaVideos.get(i).getFechaXML().replace("/", "-"));
+                v.setFecha(date);
+            }*/
+            
             request.getSession().setAttribute("listadoVideos", listaVideos);
-            request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
+            request.getRequestDispatcher("busqueda.jsp").forward(request, response);
         }
         
     }

@@ -38,17 +38,17 @@ public class BusquedaWS {
         VideoDAO vDAO = new VideoDAO();
         
         try {
-            if(autor==null) {
+            if(autor==null || autor.equals("")) {
                 autor = "%";
             }
-            if(titulo==null) {
+            if(titulo==null || titulo.equals("")) {
                 //titulo = "%";
                 titulo="%";
             }
-            if(apubliDesde==null) {
+            if(apubliDesde==null || apubliDesde.equals("")) {
                 apubliDesde="1950";
             }
-            if(apubliHasta==null) {
+            if(apubliHasta==null || apubliHasta.equals("")) {
                 apubliHasta="2100";
             }
             

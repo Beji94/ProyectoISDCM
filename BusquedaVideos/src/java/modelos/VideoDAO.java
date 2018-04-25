@@ -146,14 +146,15 @@ public class VideoDAO {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/dbISDCM", "root", "root");
 
             Statement sta = con.createStatement(); 
-
-            String SQL = ("SELECT * FROM ROOT.VIDEOS WHERE AUTOR LIKE ? AND TITULO LIKE ? AND APUBLI BETWEEN ? AND ? ");
+            
+            String SQL = ("SELECT * FROM ROOT.VIDEOS WHERE ID_USUARIO=? AND AUTOR LIKE ? AND TITULO LIKE ? AND APUBLI BETWEEN ? AND ? ");
             
             PreparedStatement pstmt = con.prepareStatement(SQL);
-            pstmt.setString(1, autor);
-            pstmt.setString(2, titulo);
-            pstmt.setInt(3, apubliDesde);
-            pstmt.setInt(4, apubliHasta);
+            pstmt.setString(1, idUsuario);
+            pstmt.setString(2, autor);
+            pstmt.setString(3, titulo);
+            pstmt.setInt(4, apubliDesde);
+            pstmt.setInt(5, apubliHasta);
             
             ResultSet res = pstmt.executeQuery();    
 
@@ -166,7 +167,7 @@ public class VideoDAO {
                               res.getString("FORMATO"), res.getString("url"), res.getString("ID_USUARIO"),
                               res.getInt("APUBLI"));
                 lista.addElement(video);
-                        
+                
             }
             
             if (lista.isEmpty()) {

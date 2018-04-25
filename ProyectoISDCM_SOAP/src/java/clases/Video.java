@@ -22,6 +22,7 @@ public class Video {
     private String formato;
     private String url;
     private String idUsuario;
+    private String fechaXML;
     
     public Video(String titulo, String autor, Date fecha, String duracion, int reproduccion, String descripcion, String formato, String url, String idUsuario ) {
         this.titulo = titulo;
@@ -33,6 +34,7 @@ public class Video {
         this.formato = formato;
         this.url = url;
         this.idUsuario = idUsuario;
+        this.fechaXML=fecha.toString().replace("-", "/");
     } 
     
     public String getTitulo() {
@@ -106,5 +108,12 @@ public class Video {
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
-    
+    public String getFechaxml() {
+        return this.fechaXML.replace("-", "/");
+    }
+
+    public void setFechaxml(String fechaXML) {
+        this.fechaXML = fechaXML;
+    }
+ 
 }
