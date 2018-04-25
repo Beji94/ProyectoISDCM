@@ -96,13 +96,17 @@ public class servletBusqueda extends HttpServlet {
             String apubliDesde = request.getParameter("apubliDesde");
             String apubliHasta = request.getParameter("apubliHasta");
             
+            //System.out.println(autor + " " + titulo+" " + apubliDesde+ " " + apubliHasta + " "+ idUsuario);
+            
             try {
                 listaVideos = (ArrayList<Video>) busqueda(autor, titulo, apubliDesde, apubliHasta, idUsuario);
             }
             catch (Exception e) {
                 System.out.println(e);
             }
-            System.out.println(listaVideos.size());
+            
+            
+            //System.out.println(listaVideos.get(0).getAutor() + " " + listaVideos.get(0).getTitulo() +" "+listaVideos.get(0).getAPubli());
             //System.out.println(listaVideos.get(0).getFechaXML());
             /*Vector<Video> vecVideos = new Vector<Video>();
             Video v = new Video();
@@ -121,8 +125,9 @@ public class servletBusqueda extends HttpServlet {
                 v.setFecha(date);
             }*/
             
+            //request.getSession().setAttribute("listadoVideos", listaVideos);
             request.getSession().setAttribute("listadoVideos", listaVideos);
-            request.getRequestDispatcher("busqueda.jsp").forward(request, response);
+            request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
         }
         
     }

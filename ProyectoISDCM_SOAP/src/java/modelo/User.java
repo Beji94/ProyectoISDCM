@@ -88,8 +88,8 @@ public class User {
             
             String SQL = "INSERT INTO ROOT.USUARIOS VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = con.prepareStatement(SQL);
-            pstmt.setString(1, nombre);
-            pstmt.setString(2, apellidos);
+            pstmt.setString(1, nombre.toLowerCase());
+            pstmt.setString(2, apellidos.toLowerCase());
             pstmt.setString(3, email);
             pstmt.setString(4, identificador);
             pstmt.setString(5, passwd);

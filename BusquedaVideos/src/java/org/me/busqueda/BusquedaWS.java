@@ -54,7 +54,7 @@ public class BusquedaWS {
             
  
             listaVideo= vDAO.busqueda(autor, titulo, Integer.valueOf(apubliDesde), Integer.valueOf(apubliHasta), usuario);
- 
+            
         } catch (SQLException ex) {
             Logger.getLogger(BusquedaWS.class.getName()).log(Level.SEVERE, null, ex);
         }

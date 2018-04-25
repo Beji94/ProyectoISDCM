@@ -63,7 +63,7 @@ public class VideoDAO {
         return cont;
     }
     
-    public void registrarVideo(long idVideo, String titulo, String autor, String duracion, String descripcion, String formato, String url, String id_usuario) throws SQLException, ParseException {
+    public void registrarVideo(long idVideo, String titulo, String autor, String duracion, String descripcion, String formato, String url, String id_usuario, int aPubli) throws SQLException, ParseException {
         
         int reproduccion = 0;
         Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/dbISDCM", "root", "root");
@@ -73,18 +73,19 @@ public class VideoDAO {
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         
         
-        String SQL = "INSERT INTO ROOT.VIDEOS (IDENTIFICADOR, TITULO, AUTOR, FECHA, DURACION, REPRODUCCION, DESCRIPCION, FORMATO, URL, ID_USUARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO ROOT.VIDEOS (IDENTIFICADOR, TITULO, AUTOR, FECHA, DURACION, REPRODUCCION, DESCRIPCION, FORMATO, URL, ID_USUARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = con.prepareStatement(SQL);
         pstmt.setLong(1, idVideo);
-        pstmt.setString(2, titulo);
-        pstmt.setString(3, autor);
+        pstmt.setString(2, titulo.toLowerCase());
+        pstmt.setString(3, autor.toLowerCase());
         pstmt.setDate(4, sqlDate);
         pstmt.setTime(5, Time.valueOf(duracion));
         pstmt.setInt(6, reproduccion);
-        pstmt.setString(7, descripcion);
-        pstmt.setString(8, formato);
+        pstmt.setString(7, descripcion.toLowerCase());
+        pstmt.setString(8, formato.toLowerCase());
         pstmt.setString(9, url);
         pstmt.setString(10, id_usuario);
+        pstmt.setInt(10, aPubli);
         pstmt.executeUpdate();
         pstmt.close();
     }
@@ -110,7 +111,7 @@ public class VideoDAO {
                     Video video = new Video(res.getString("TITULO"), res.getString("AUTOR"), 
                                   Date.valueOf(res.getString("FECHA")), res.getString("DURACION"), 
                                   res.getInt("REPRODUCCION"), res.getString("DESCRIPCION"), 
-                                  res.getString("FORMATO"), res.getString("url"), res.getString("ID_USUARIO"));
+                                  res.getString("FORMATO"), res.getString("url"), res.getString("ID_USUARIO"), res.getInt("APUBLI"));
                     lista.addElement(video);
                 }           
             }

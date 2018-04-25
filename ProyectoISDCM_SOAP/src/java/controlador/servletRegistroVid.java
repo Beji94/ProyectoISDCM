@@ -82,7 +82,7 @@ public class servletRegistroVid extends HttpServlet {
                         }
 
                         try {
-                            video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario);
+                            video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario, request.getIntHeader("aPubli"));
                             VideoDAO videoDAO = new VideoDAO();
                             Vector<Video> listaVideos = new Vector<Video>();
                             try {
@@ -91,6 +91,7 @@ public class servletRegistroVid extends HttpServlet {
                                 Logger.getLogger(servletUser.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             request.getSession().setAttribute("listadoVideos", listaVideos);
+                            request.getSession().setAttribute("rutaVideo", true);
                             request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
 
                         } catch (SQLException ex) {

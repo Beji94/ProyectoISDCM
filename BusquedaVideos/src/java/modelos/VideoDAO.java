@@ -124,10 +124,10 @@ public class VideoDAO {
     }
     public Vector<Video> busqueda(String autor, String titulo, int apubliDesde, 
             int apubliHasta, String idUsuario) throws SQLException {
-        
+        //System.out.println(autor + " " + titulo+" " + apubliDesde+ " " + apubliHasta + " "+ idUsuario);
         Vector<Video> lista = new Vector<Video>();
-        autor = autor + "%";
-        titulo = titulo + "%"; 
+        autor = "%" + autor + "%";
+        titulo = "%" + titulo + "%"; 
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         if(apubliDesde==0) {
@@ -151,8 +151,8 @@ public class VideoDAO {
             
             PreparedStatement pstmt = con.prepareStatement(SQL);
             pstmt.setString(1, idUsuario);
-            pstmt.setString(2, autor);
-            pstmt.setString(3, titulo);
+            pstmt.setString(2, autor.toLowerCase());
+            pstmt.setString(3, titulo.toLowerCase());
             pstmt.setInt(4, apubliDesde);
             pstmt.setInt(5, apubliHasta);
             

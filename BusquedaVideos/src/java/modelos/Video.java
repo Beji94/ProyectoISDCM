@@ -16,18 +16,18 @@ public class Video {
     private String titulo;
     private String autor;
     private Date fecha;
-    private String fechaXML;
+    private String fechaxml;
     private String duracion;
     private int reproduccion;
     private String descripcion;
     private String formato;
     private String url;
     private String idUsuario;
-    private int apubli;
+    private int aPubli;
 
 
     
-    public Video(String titulo, String autor, Date fecha, String duracion, int reproduccion, String descripcion, String formato, String url, String idUsuario, int apubli ) {
+    public Video(String titulo, String autor, Date fecha, String duracion, int reproduccion, String descripcion, String formato, String url, String idUsuario, int aPubli ) {
         this.titulo = titulo;
         this.autor = autor;
         this.fecha = fecha;
@@ -37,8 +37,8 @@ public class Video {
         this.formato = formato;
         this.url = url;
         this.idUsuario = idUsuario;
-        this.apubli = apubli;
-        this.fechaXML=fecha.toString().replace("-", "/");
+        this.aPubli = aPubli;
+        this.fechaxml=fecha.toString().replace("-", "/");
     } 
     
     public String getTitulo() {
@@ -65,14 +65,14 @@ public class Video {
         this.fecha =  fecha;
     }
 
-    public void setFechaxml(String fechaXML) {
-        this.fechaXML = fecha.toString();
+    public void setFechaxml(String fechaxml) {
+        this.fechaxml = fecha.toString();
        
         
     }
      public String getFechaxml() {
             
-          return this.fechaXML.replace("-", "/");
+          return this.fechaxml;
           
     }
     public String getDuracion() {
@@ -123,11 +123,11 @@ public class Video {
         this.idUsuario = idUsuario;
     }
     
-    public int getApubli() {
-        return apubli;
+    public int getaPubli() {
+        return aPubli;
     }
 
-    public void setApubli(int apubli) {
-        this.apubli = apubli;
+    public void setaPubli(int aPubli) {
+        this.aPubli = aPubli;
     }
 }

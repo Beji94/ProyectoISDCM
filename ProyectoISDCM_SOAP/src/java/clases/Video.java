@@ -22,9 +22,12 @@ public class Video {
     private String formato;
     private String url;
     private String idUsuario;
-    private String fechaXML;
+    private String fechaxml;
+    private int aPubli;
+
     
-    public Video(String titulo, String autor, Date fecha, String duracion, int reproduccion, String descripcion, String formato, String url, String idUsuario ) {
+    
+    public Video(String titulo, String autor, Date fecha, String duracion, int reproduccion, String descripcion, String formato, String url, String idUsuario, int aPubli ) {
         this.titulo = titulo;
         this.autor = autor;
         this.fecha = fecha;
@@ -34,7 +37,8 @@ public class Video {
         this.formato = formato;
         this.url = url;
         this.idUsuario = idUsuario;
-        this.fechaXML=fecha.toString().replace("-", "/");
+        this.fechaxml=fecha.toString().replace("-", "/");
+        this.aPubli = aPubli;
     } 
     
     public String getTitulo() {
@@ -109,11 +113,18 @@ public class Video {
         this.idUsuario = idUsuario;
     }
     public String getFechaxml() {
-        return this.fechaXML.replace("-", "/");
+        return this.fechaxml;
     }
 
-    public void setFechaxml(String fechaXML) {
-        this.fechaXML = fechaXML;
+    public void setFechaxml(String fechaxml) {
+        this.fechaxml = fechaxml;
     }
- 
+    
+    public int getaPubli() {
+        return aPubli;
+    }
+
+    public void setaPubli(int aPubli) {
+        this.aPubli = aPubli;
+    }
 }

@@ -19,66 +19,8 @@
         <title>Lista de Videos</title>
     </head>
      <body background="css/resources/fondo.jpg">
-           <!--<form action="servletListavideo" class="login-form" method="post">
-               <td><input type="submit" name="listavideo" value="Aceptar" /> </td>
-           </form>
-           -->
-          <!--
-          <div id ="divfindparameters">
-                
-                           <table id ="findparameters">
-                               <tr>
-                                <th>Titulo</th>
-                                <th>Autor</th>
-                                <th>año de publicacion <br>
-                             
-                                <table>
-                                    <tr>
-                                    <td>Desde</td>
-                                    <td>Hasta</td>
-                                    </tr>
-                                    
-                                    </table>
-                                    </th>
-                                
-                                </tr>
-                               <tr>
-                                   <td> <input type="text" name="autor">  </td>
-                                   <td> <input type="text" name="titulo">  </td>
-                                   <td> <input type="text" name="apubliDesde">  </td>
-                                   <td> <input type="text" name="apubliHasta">  </td>
-                                   <td>  <input type="submit" name="filtrar" value="buscar" /></td>
-                                </tr>
-                                <tr>
-                                   <>
-                                </tr>
-                            </table>
-              </div>
-           -->
-           <div>          
-               <c:choose>
-                    <c:when test="${listadoVideos.isEmpty()}">
-                       <div id="divlistavideo">
-                           <h2>Actualmente no tienes ningún video</h2>
-                           <table id ="videos">
-                               <tr>
-                                <th>Titulo</th>
-                                <th>Fecha</th>
-                                <th>Duracion</th>
-                                <th>Numero reproducciones</th>
-                                <th>Formato</th>
-                                <th>Url</th>
-                                </tr>
-                               <tr>
-                                    <td colspan="6" > agregar nuevo video <a href="videos.jsp">aquí</a>  </td>
-                                </tr>
-                            </table>
-                       
-                       </div>
-                    </c:when>
-               
-                   <c:otherwise>
-                       <form id="listaVideo" action="servletBusqueda" method="post">
+           <div>   
+               <form id="listaVideo" action="servletBusqueda" method="post">
                        <div id ="divlistavideo"> 
                         <table id ="videos">
                             <tr>
@@ -90,8 +32,9 @@
                             </tr>
  
                             <tr>
+                                <th>Autor</th>
                                 <th>Titulo</th>
-                                <th>Fecha</th>
+                                <th>Año de Publicación</th>
                                 <th>Duracion</th>
                                 <th>Numero reproducciones</th>
                                 <th>Formato</th>
@@ -100,8 +43,9 @@
                         <c:forEach items="${listadoVideos}" var="video">
                             
                             <tr>
+                            <td>${video.autor}</td>
                             <td>${video.titulo}</td>
-                            <td>${video.fecha}</td>
+                            <td>${video.aPubli}</td>
                             <td>${video.duracion} </td>
                             <td>${video.reproduccion} </td>
                             <td>${video.formato} </td>
@@ -116,9 +60,6 @@
                        </table>
                        </div>
                        </form>   
-                   </c:otherwise>
-
-               </c:choose>
            </div>
            
     </body>
