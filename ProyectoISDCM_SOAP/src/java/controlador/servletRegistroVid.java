@@ -82,11 +82,9 @@ public class servletRegistroVid extends HttpServlet {
                         }
 
                         try {
-<<<<<<< HEAD
-                            video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario, Integer.parseInt(request.getParameter("aPubli")));
-=======
+
                             video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario,  Integer.parseInt(request.getParameter("aPubli")));
->>>>>>> ba88bc85e907677cf74a47fe4df401f7cd3f2766
+
                             VideoDAO videoDAO = new VideoDAO();
                             Vector<Video> listaVideos = new Vector<Video>();
                             try {
