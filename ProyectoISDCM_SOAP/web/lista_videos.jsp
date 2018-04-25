@@ -21,15 +21,18 @@
      <body background="css/resources/fondo.jpg">
            <div>   
                <form id="listaVideo" action="servletBusqueda" method="post">
-                       <div id ="divlistavideo"> 
+                    <div id ="divbusqueda"    >
+                               <td> <input type="text" placeholder="Autor" name="autor" value="" /></td>
+                                <td> <input type="text" placeholder ="Titulo" name="titulo" value="" /></td>
+                                <td> <input type="text" placeholder="publicacion desde" name="apubliDesde" value="" /></td>
+                                <td> <input type="text" placeholder ="publicacion hasta" name="apubliHasta" value="" /></td>
+                                <td style="align-items: center"><input  type="submit" name="filtrar" value="Filtrar" /></td>
+                            </div>
+                       <div id ="divlistaVideo"> 
+                           
                         <table id ="videos">
-                            <tr>
-                                <th>Autor <input type="text" name="autor" value="" /></th>
-                                <th>Titulo <input type="text" name="titulo" value="" /></th>
-                                <th>Fecha desde <input type="text" name="apubliDesde" value="" /></th>
-                                <th>Fecha hasta <input type="text" name="apubliHasta" value="" /></th>
-                                <th><input type="submit" name="filtrar" value="Filtrar" /></th>
-                            </tr>
+                           
+                           
  
                             <tr>
                                 <th>Autor</th>

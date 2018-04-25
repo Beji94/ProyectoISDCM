@@ -122,6 +122,20 @@ public class VideoDAO {
         
         return lista;
     }
+   public   boolean isNumeric(String cadena) {
+
+        boolean resultado;
+
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
+    }
+    
     public Vector<Video> busqueda(String autor, String titulo, int apubliDesde, 
             int apubliHasta, String idUsuario) throws SQLException {
         //System.out.println(autor + " " + titulo+" " + apubliDesde+ " " + apubliHasta + " "+ idUsuario);
@@ -130,6 +144,7 @@ public class VideoDAO {
         titulo = "%" + titulo + "%"; 
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        
         if(apubliDesde==0) {
             apubliDesde=1950;
         }

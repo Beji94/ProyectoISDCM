@@ -73,7 +73,7 @@ public class VideoDAO {
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         
         
-        String SQL = "INSERT INTO ROOT.VIDEOS (IDENTIFICADOR, TITULO, AUTOR, FECHA, DURACION, REPRODUCCION, DESCRIPCION, FORMATO, URL, ID_USUARIO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO ROOT.VIDEOS (IDENTIFICADOR, TITULO, AUTOR, FECHA, DURACION, REPRODUCCION, DESCRIPCION, FORMATO, URL, ID_USUARIO,APUBLI) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = con.prepareStatement(SQL);
         pstmt.setLong(1, idVideo);
         pstmt.setString(2, titulo.toLowerCase());
@@ -85,7 +85,7 @@ public class VideoDAO {
         pstmt.setString(8, formato.toLowerCase());
         pstmt.setString(9, url);
         pstmt.setString(10, id_usuario);
-        pstmt.setInt(10, aPubli);
+        pstmt.setInt(11, aPubli);
         pstmt.executeUpdate();
         pstmt.close();
     }
