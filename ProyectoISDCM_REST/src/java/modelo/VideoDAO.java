@@ -108,7 +108,7 @@ public class VideoDAO {
                 if (res.getString("ID_USUARIO").equals(identificador)) {
 
                     //Crear nuevo video por cada iteración
-                    Video video = new Video(res.getString("TITULO"), res.getString("AUTOR"), 
+                    Video video = new Video(res.getInt("IDENTIFICADOR"),res.getString("TITULO"), res.getString("AUTOR"), 
                                   Date.valueOf(res.getString("FECHA")), res.getString("DURACION"), 
                                   res.getInt("REPRODUCCION"), res.getString("DESCRIPCION"), 
                                   res.getString("FORMATO"), res.getString("url"), res.getString("ID_USUARIO"), res.getInt("APUBLI"));

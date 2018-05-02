@@ -46,6 +46,7 @@
                     </c:when>
                
                    <c:otherwise>
+                       
                        <div id ="divlistavideo"> 
                         <table id ="videos">
                             <tr>
@@ -64,18 +65,16 @@
                             <td>${video.duracion} </td>
                             <td>${video.reproduccion} </td>
                             <td>${video.formato} </td>
-                            <td><a href=${video.url}>${video.url}</a></td>
+                            <td><a href="servletReproduccion?identificador=${video.identificador}">${video.url}</a></td>
                             </tr>
-                            <!-- Esta es la url que hay que construir para hacer la llamada a REST
-                            http://localhost:8080/Prueba_ServerRest/webresources/entidades.videos/ruta?url=https://www.youtube.com/watch?v=CvixRV5DfXk
-                            -->
-
+          
                          </c:forEach>
                              <tr>
                                 <td colspan="6" > agregar nuevo video <a href="videos.jsp">aquí</a>  </td>
                             </tr>
                        </table>
                        </div>
+                    
                    </c:otherwise>
 
                </c:choose>

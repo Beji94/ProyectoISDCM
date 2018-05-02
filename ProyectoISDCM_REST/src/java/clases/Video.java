@@ -13,6 +13,7 @@ import java.sql.Date;
  */
 public class Video {
     
+    private int identificador;
     private String titulo;
     private String autor;
     private Date fecha;
@@ -27,7 +28,8 @@ public class Video {
 
     
     
-    public Video(String titulo, String autor, Date fecha, String duracion, int reproduccion, String descripcion, String formato, String url, String idUsuario, int aPubli ) {
+    public Video(int identificador, String titulo, String autor, Date fecha, String duracion, int reproduccion, String descripcion, String formato, String url, String idUsuario, int aPubli ) {
+        this.identificador = identificador;
         this.titulo = titulo;
         this.autor = autor;
         this.fecha = fecha;
@@ -126,5 +128,13 @@ public class Video {
 
     public void setaPubli(int aPubli) {
         this.aPubli = aPubli;
+    }
+    
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
     }
 }

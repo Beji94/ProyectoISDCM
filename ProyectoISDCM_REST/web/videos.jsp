@@ -66,6 +66,10 @@
                     <td  class ="labelTitle">      formato                     </td>
                     <td><input type="text" class ="textbox"name="formato" /></td>
                 </tr>
+                <tr>
+                    <td  class ="labelTitle">      Año de publicación                     </td>
+                    <td><input type="text" class ="textbox" name="aPubli" /></td>
+                </tr>
                  <tr>
                      
                     <td> 

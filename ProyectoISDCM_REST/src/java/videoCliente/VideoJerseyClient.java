@@ -114,7 +114,7 @@ public class VideoJerseyClient {
         client.destroy();
     }
     
-    public static void main(String args[])
+    /*public static void main(String args[])
     {
         
         VideoJerseyClient client1=new VideoJerseyClient();
@@ -125,6 +125,7 @@ public class VideoJerseyClient {
         Videos v= response1.getEntity(genericType);
         System.out.println("Numero de reproducciones antes: "+ v.getReproduccion());
         v.setReproduccion(v.getReproduccion()+1);
+        
         client1.edit_XML(v, v.getIdentificador().toString());
         
         response1= client1.findbyurl_XML(ClientResponse.class, "https://www.youtube.com/watch?v=CvixRV5DfXk");
@@ -132,5 +133,5 @@ public class VideoJerseyClient {
         v= response1.getEntity(genericType);
         System.out.println("Numero de reproducciones despues: "+ v.getReproduccion());
         
-    }
+    }*/
 }

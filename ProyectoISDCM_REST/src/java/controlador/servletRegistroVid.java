@@ -38,6 +38,18 @@ public class servletRegistroVid extends HttpServlet {
                 request.setAttribute("mensaje", "Usted no se ha iniciado sesión");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
+            else if (request.getParameter("actualizar") != null) {
+                VideoDAO vact = new VideoDAO();
+                Vector<Video> listaActualizada = new Vector<Video>();
+                try {
+                    listaActualizada = vact.listaVideos((String) request.getSession().getAttribute("identificador"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                request.getSession().setAttribute("listadoVideos", listaActualizada);
+                request.getRequestDispatcher("lista_videos.jsp").forward(request, response);
+            }
             else if (request.getParameter("videos") != null) {   
                 //Obtener el identificador del usuario mediante la sesion
                 HttpSession sesion = (HttpSession) request.getSession();
