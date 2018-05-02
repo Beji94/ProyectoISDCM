@@ -62,26 +62,12 @@ public class servletReproduccion extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        /*try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet servletReproduccion</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            String cad=request.getParameter("url");
-            out.println("<h1>Identificador " + cad + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }*/
+
         String id = request.getParameter("identificador");
 
         VideoJerseyClient client1= new VideoJerseyClient();
         GenericType<Videos> genericType = new GenericType<Videos>() {};
-       // ClientResponse response1=new ClientResponse();
         ClientResponse response1= client1.find_XML(ClientResponse.class, id);
-        //ClientResponse response1= client1.findbyurl_XML(ClientResponse.class, cad);
-        //System.out.println("URL del video:"+ cad);
         Videos v= response1.getEntity(genericType);
         v.setReproduccion(v.getReproduccion()+1);
         String cad = v.getUrl();
