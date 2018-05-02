@@ -76,6 +76,7 @@ public class servletReproduccion extends HttpServlet {
         client1.edit_XML(v, v.getIdentificador().toString());
         
         request.setAttribute("idVideo", idVideo);
+        request.setAttribute("videoReproduccion", v);
         request.getRequestDispatcher("reproduccion.jsp").forward(request, response);
         
     }

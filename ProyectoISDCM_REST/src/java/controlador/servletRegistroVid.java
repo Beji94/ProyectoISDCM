@@ -55,6 +55,7 @@ public class servletRegistroVid extends HttpServlet {
                 HttpSession sesion = (HttpSession) request.getSession();
                 String idUsuario = (String) sesion.getAttribute("identificador");
                 int cont = 0;
+                int validarFormato = 0;
                 VideoDAO video = new VideoDAO();
              
                 String titulo=request.getParameter("titulo");
@@ -62,7 +63,7 @@ public class servletRegistroVid extends HttpServlet {
                 String duracion=request.getParameter("duracion");
                 String descripcion=request.getParameter("descripcion");
                 String url=request.getParameter("url");
-                String formato=request.getParameter("formato");
+                String formato="ytb";
             
                 if(titulo.isEmpty() || autor.isEmpty() || duracion.isEmpty() || descripcion.isEmpty() || url.isEmpty() || formato.isEmpty()) {
                     request.setAttribute("incompleto", "true");
@@ -74,6 +75,7 @@ public class servletRegistroVid extends HttpServlet {
                 else { 
                     try {
                         cont = video.verificarURL(idUsuario, request.getParameter("url"));
+                        validarFormato = video.validarFormato(request.getParameter("url"));
                     } catch (SQLException ex) {
                         Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -83,7 +85,11 @@ public class servletRegistroVid extends HttpServlet {
                         request.setAttribute("mensaje", "El video que intenta grabar ya está registrado anteriormente");
                         request.getRequestDispatcher("videos.jsp").forward(request, response);
                     }
-
+                    else if(validarFormato>0) {
+                        request.setAttribute("formatoerror", "true");
+                        request.setAttribute("mensaje", "El video que intenta grabar no es un video válido de Youtube");
+                        request.getRequestDispatcher("videos.jsp").forward(request, response);
+                    }
                     else {
 
                         try {
@@ -95,7 +101,7 @@ public class servletRegistroVid extends HttpServlet {
 
                         try {
 
-                            video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), request.getParameter("formato"), request.getParameter("url"), idUsuario,  Integer.parseInt(request.getParameter("aPubli")));
+                            video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), formato, request.getParameter("url"), idUsuario,  Integer.parseInt(request.getParameter("aPubli")));
 
                             VideoDAO videoDAO = new VideoDAO();
                             Vector<Video> listaVideos = new Vector<Video>();

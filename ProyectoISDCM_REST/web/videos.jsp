@@ -30,6 +30,12 @@
                         <script> alert("${mensaje}");</script>
                     </c:if>
                 </c:when>
+                        
+                <c:when test="${formatoerror!=null}">
+                    <c:if test="${formatoerror.equals('true')}">
+                        <script> alert("${mensaje}");</script>
+                    </c:if>
+                </c:when>
             </c:choose>
                         
           <form action="servletRegistroVid" method="post">
@@ -60,11 +66,6 @@
                 <tr>
                     <td  class ="labelTitle">      URL                     </td>
                     <td><input type="text" class ="textbox"name="url" /></td>
-                </tr>
-                
-                 <tr>
-                    <td  class ="labelTitle">      formato                     </td>
-                    <td><input type="text" class ="textbox"name="formato" /></td>
                 </tr>
                 <tr>
                     <td  class ="labelTitle">      Año de publicación                     </td>

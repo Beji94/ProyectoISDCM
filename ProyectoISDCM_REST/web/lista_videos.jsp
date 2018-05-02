@@ -34,7 +34,6 @@
                                 <th>Fecha</th>
                                 <th>Duracion</th>
                                 <th>Numero reproducciones</th>
-                                <th>Formato</th>
                                 <th>Url</th>
                                 </tr>
                                <tr>
@@ -54,7 +53,6 @@
                                 <th>Fecha</th>
                                 <th>Duracion</th>
                                 <th>Numero reproducciones</th>
-                                <th>Formato</th>
                                 <th>Url</th>
                             </tr>
                         <c:forEach items="${listadoVideos}" var="video">
@@ -64,7 +62,6 @@
                             <td>${video.fecha}</td>
                             <td>${video.duracion} </td>
                             <td>${video.reproduccion} </td>
-                            <td>${video.formato} </td>
                             <td><a href="servletReproduccion?identificador=${video.identificador}">${video.url}</a></td>
                             </tr>
           

@@ -47,6 +47,18 @@ public class VideoDAO {
         return cont;
     }
      
+    public int validarFormato(String url) {
+        int x;
+        String cad = url.substring(0, 32);
+        if (!cad.equals("https://www.youtube.com/watch?v=")) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+        
+    } 
+     
     public int contarVideos(String identificador) throws SQLException {
         int cont=0;
         
@@ -71,6 +83,7 @@ public class VideoDAO {
         
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        
         
         
         String SQL = "INSERT INTO ROOT.VIDEOS (IDENTIFICADOR, TITULO, AUTOR, FECHA, DURACION, REPRODUCCION, DESCRIPCION, FORMATO, URL, ID_USUARIO,APUBLI) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
