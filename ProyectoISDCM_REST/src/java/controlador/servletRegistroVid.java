@@ -62,10 +62,11 @@ public class servletRegistroVid extends HttpServlet {
                 String autor=request.getParameter("autor");
                 String duracion=request.getParameter("duracion");
                 String descripcion=request.getParameter("descripcion");
-                String url=request.getParameter("url");
+                //String url=request.getParameter("url");
+                String ruta = request.getParameter("ruta");
                 String formato="ytb";
             
-                if(titulo.isEmpty() || autor.isEmpty() || duracion.isEmpty() || descripcion.isEmpty() || url.isEmpty() || formato.isEmpty()) {
+                if(titulo.isEmpty() || autor.isEmpty() || duracion.isEmpty() || descripcion.isEmpty() || ruta.isEmpty() || formato.isEmpty()) {
                     request.setAttribute("incompleto", "true");
                     request.setAttribute("mensaje", "No puedes dejar ningún campo sin rellenar");
                     request.getRequestDispatcher("videos.jsp").forward(request, response);
@@ -73,12 +74,12 @@ public class servletRegistroVid extends HttpServlet {
                 } 
              
                 else { 
-                    try {
+                    /*try {
                         cont = video.verificarURL(idUsuario, request.getParameter("url"));
                         validarFormato = video.validarFormato(request.getParameter("url"));
                     } catch (SQLException ex) {
                         Logger.getLogger(servletRegistroVid.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    }*/
 
                     if(cont>0) {
                         request.setAttribute("dobleurl", "true");
@@ -101,7 +102,7 @@ public class servletRegistroVid extends HttpServlet {
 
                         try {
 
-                            video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), formato, request.getParameter("url"), idUsuario,  Integer.parseInt(request.getParameter("aPubli")));
+                            video.registrarVideo(idVideo, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("duracion"), request.getParameter("descripcion"), formato, request.getParameter("ruta"), idUsuario,  Integer.parseInt(request.getParameter("aPubli")));
 
                             VideoDAO videoDAO = new VideoDAO();
                             Vector<Video> listaVideos = new Vector<Video>();

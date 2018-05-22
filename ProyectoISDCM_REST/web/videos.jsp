@@ -63,9 +63,14 @@
                 </tr>
                  
                 
-                <tr>
+                <!--<tr>
                     <td  class ="labelTitle">      URL                     </td>
                     <td><input type="text" class ="textbox"name="url" /></td>
+                </tr>
+                -->
+                <tr>
+                    <td  class ="labelTitle">      Ruta                     </td>
+                    <td><input type="text" class ="textbox"name="ruta" /></td>
                 </tr>
                 <tr>
                     <td  class ="labelTitle">      Año de publicación                     </td>

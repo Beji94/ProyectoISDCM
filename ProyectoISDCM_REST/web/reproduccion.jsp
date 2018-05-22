@@ -16,6 +16,7 @@
       
        <!-- <div id="divframe">
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+<!--
         <div style="float:left; padding:10px 10px 10px 10px; margin:0 !important;" id="player"></div> 
      
         <script>
@@ -63,6 +64,12 @@
             player.stopVideo();
           }
         </script>
+-->
+        <div class="col-sm-7">
+            <video width="600" controls autoplay>
+                <source src=${videoReproduccion.url} type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <div class="col-sm-7">
             </br></br></br>
@@ -83,12 +90,14 @@
                 <br>
             </div>   
                 </br>  </br>  </br>  </br>  </br>
-                <center><div class="formRepro"> 
-                <form action="servletRegistroVid" method="post">
-                <input type="submit" name="actualizar" value="Regresar">
-                </form>
-                    </div></center>
-        <!--</div>   --> 
+            <center>
+                <div class="formRepro"> 
+                    <form action="servletRegistroVid" method="post">
+                    <input type="submit" name="actualizar" value="Regresar">
+                    </form>
+                </div>
+            </center>
+        </div> 
 
   </body>
 </html>

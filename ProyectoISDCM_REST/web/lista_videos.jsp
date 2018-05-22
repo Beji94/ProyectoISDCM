@@ -69,6 +69,9 @@
                              <tr>
                                 <td colspan="6" > agregar nuevo video <a href="videos.jsp">aquí</a>  </td>
                             </tr>
+                            <tr>
+                                <td colspan="6" > Encriptar/Desencriptar XML <a href="encriptacion.jsp">aquí</a>  </td>
+                            </tr>
                        </table>
                        </div>
                     

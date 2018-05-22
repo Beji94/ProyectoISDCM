@@ -70,12 +70,13 @@ public class servletReproduccion extends HttpServlet {
         ClientResponse response1= client1.find_XML(ClientResponse.class, id);
         Videos v= response1.getEntity(genericType);
         v.setReproduccion(v.getReproduccion()+1);
-        String cad = v.getUrl();
+        /*String cad = v.getUrl();
         String[] cadenaSplit = cad.split("=");
-        String idVideo = cadenaSplit[1];
+        String idVideo = cadenaSplit[1];*/
         client1.edit_XML(v, v.getIdentificador().toString());
         
-        request.setAttribute("idVideo", idVideo);
+        //request.setAttribute("idVideo", idVideo);
+        
         request.setAttribute("videoReproduccion", v);
         request.getRequestDispatcher("reproduccion.jsp").forward(request, response);
         
